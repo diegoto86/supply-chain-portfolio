@@ -17,16 +17,17 @@ import Knowledge from './pages/Knowledge';
 
 function AppWrapper() {
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const path = location.pathname;
 
   return (
     <>
-      {isHome ? <NavbarHome /> : <NavbarDefault />}
+      {path === '/' ? <NavbarHome /> : <NavbarDefault />}
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/proyectos" element={<Projects />} />
         <Route path="/cv" element={<CV />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/knowledge" element={<Knowledge />} />
       </Routes>
     </>

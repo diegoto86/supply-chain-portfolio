@@ -1,10 +1,16 @@
-// SelectorPill.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const pills = ["Proyectos", "Knowledge Base", "CV", "Contacto"];
+const pills = [
+  { label: "Proyectos", path: "/proyectos" },
+  { label: "Knowledge Base", path: "/knowledge" },
+  { label: "CV", path: "/cv" },
+  { label: "Contacto", path: "/contacto" },
+];
 
 const SelectorPill = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-wrap gap-6 mt-12 justify-center items-center bg-[#d8fe51] px-4 py-3 rounded-full scale-[1.25]">
@@ -13,10 +19,11 @@ const SelectorPill = () => {
           key={index}
           onMouseEnter={() => setActiveIndex(index)}
           onMouseLeave={() => setActiveIndex(null)}
+          onClick={() => navigate(pill.path)}
           className={`px-8 py-3 rounded-full text-base font-semibold transition-colors duration-300
             ${activeIndex === index ? 'bg-black text-[#d8fe51]' : 'bg-[#d8fe51] text-black'}`}
         >
-          {pill}
+          {pill.label}
         </button>
       ))}
     </div>

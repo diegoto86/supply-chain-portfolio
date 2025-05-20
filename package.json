@@ -9,6 +9,7 @@
     "ajv": "^6.12.6",
     "ajv-keywords": "^3.5.2",
     "autoprefixer": "^10.4.21",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "lucide-react": "^0.271.0",
     "postcss": "^8.4.35",
