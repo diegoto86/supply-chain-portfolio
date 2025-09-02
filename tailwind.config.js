@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        grotesk: ['"Space Grotesk"', 'sans-serif'],
+      },
       keyframes: {
         fadeWord: {
           '0%': { opacity: '0' },

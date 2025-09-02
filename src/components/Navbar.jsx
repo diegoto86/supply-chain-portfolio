@@ -1,49 +1,43 @@
-import React from 'react';
-import { TrendingUp } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export default function NavbarHome() {
-  const location = useLocation();
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const navItems = [
-    { label: "Inicio", path: "/" },
-    { label: "Professional Profile", path: "/profile" },
-    { label: "Knowledge Base", path: "/knowledge" },
-    { label: "Proyectos", path: "/proyectos" },
-  ];
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="w-full bg-black text-white px-6 py-4 border-b border-gray-700">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
-        
-        {/* IZQUIERDA: Logo + Lema */}
-        <div className="flex items-center gap-3">
-          <div className="bg-white rounded-sm p-1 flex items-center justify-center">
-            <TrendingUp size={25} className="text-black" />
-          </div>
-          <div className="leading-tight text-sm md:text-base text-gray-300">
-            <div className="flex flex-col justify-center">
-              <span className="block">A value-creating professional</span>
-              <span className="block">for supply chain enterprises</span>
-            </div>
-          </div>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 font-grotesk transition-colors transition-transform duration-300 ${
+        isScrolled ? 'bg-emerald-400' : 'bg-white'
+      }`}
+    >
+      <div className="h-2 bg-emerald-400" />
+      <div className="flex items-center justify-between px-8 py-4">
+        <div className="flex items-center gap-8 text-black">
+          <div className="border-2 border-black px-2 py-1 font-bold leading-none">ZJ</div>
+          <Link to="/projects" className="hover:text-emerald-600">
+            Projects
+          </Link>
+          <Link to="/extras" className="hover:text-emerald-600">
+            Extras
+          </Link>
+          <Link to="/knowledge" className="hover:text-emerald-600">
+            Knowledge
+          </Link>
         </div>
-
-        {/* DERECHA: Pills de navegación */}
-        <div className="flex gap-4 text-sm font-medium text-white">
-          {navItems.map((item, idx) => (
-            <Link
-              key={idx}
-              to={item.path}
-              className={`px-4 py-2 rounded-full transition-colors duration-200
-                ${location.pathname === item.path
-                  ? 'bg-[#d8fe51] text-black'
-                  : 'hover:bg-[#d8fe51] hover:text-black'}`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        <Link
+          to="/contact"
+          className="border-2 border-black px-4 py-2 text-black transition-colors hover:bg-black hover:text-white"
+        >
+          Contact Me
+        </Link>
       </div>
     </nav>
   );

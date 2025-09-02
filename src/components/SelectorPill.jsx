@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const pills = [
-  { label: "Proyectos", path: "/proyectos" },
-  { label: "Knowledge Base", path: "/knowledge" },
-  { label: "Professional Profile", path: "/profile" },
-  { label: "Contacto", path: "/contacto" },
+  { label: "Projects", path: "/projects" },
+  { label: "Extras", path: "/extras" },
+  { label: "Knowledge", path: "/knowledge" },
+  { label: "Contact", path: "/contact" },
 ];
 
 const SelectorPill = () => {
