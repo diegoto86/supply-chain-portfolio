@@ -2,41 +2,36 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  useLocation
+  Route
 } from 'react-router-dom';
 
-import NavbarHome from './components/NavbarHome';
-import NavbarDefault from './components/NavbarDefault';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 import Home from './pages/Home';
 import Projects from './pages/Projects';
+import ProfessionalProfile from './pages/ProfessionalProfile/ProfessionalProfile';
 import Contact from './pages/Contact';
 import Knowledge from './pages/Knowledge';
-import CV from './pages/CV'; // Si ya tienes esta página
-
-function AppWrapper() {
-  const location = useLocation();
-  const isHome = location.pathname === '/';
-
-  return (
-    <>
-      {isHome ? <NavbarHome /> : <NavbarDefault />}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/knowledge" element={<Knowledge />} />
-        <Route path="/cv" element={<CV />} />
-      </Routes>
-    </>
-  );
-}
 
 export default function App() {
   return (
     <Router>
-      <AppWrapper />
+      <div className="flex flex-col min-h-screen bg-black text-white">
+        <Navbar />
+
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/proyectos" element={<Projects />} />
+            <Route path="/profile" element={<ProfessionalProfile />} />
+            <Route path="/contacto" element={<Contact />} />
+            <Route path="/knowledge" element={<Knowledge />} />
+          </Routes>
+        </main>
+
+        <Footer />
+      </div>
     </Router>
   );
 }

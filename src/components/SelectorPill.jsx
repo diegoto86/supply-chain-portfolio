@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const pills = [
   { label: "Proyectos", path: "/proyectos" },
   { label: "Knowledge Base", path: "/knowledge" },
-  { label: "CV", path: "/cv" },
+  { label: "Professional Profile", path: "/profile" },
   { label: "Contacto", path: "/contacto" },
 ];
 

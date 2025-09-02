@@ -6,3 +6,20 @@ html,
 body {
   @apply m-0 p-0 h-full overflow-x-hidden overflow-y-auto;
 }
+
+/* === Flip Card Animation === */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
